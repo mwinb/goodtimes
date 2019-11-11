@@ -43,7 +43,9 @@
     "sitemapSwitcherAuto": false,
     "siteUrl": false,
     "cookiesAlert": false,
-    "gdpr": false
+    "gdpr": false,
+    "publishType": "local",
+    "publishPath": "file:///C:/Users/Mike/Documents/goodtimes"
   },
   "pages": {
     "index.html": {
@@ -488,7 +490,7 @@
         }
       ]
     },
-    "page1.html": {
+    "about.html": {
       "settings": {
         "meta_descr": "Web Creator Description",
         "title": "About",
