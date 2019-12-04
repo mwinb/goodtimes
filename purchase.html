@@ -7,9 +7,10 @@
   <meta name="generator" content="Mobirise v4.11.5, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/mbr-7.jpg" type="image/x-icon">
-  <meta name="description" content="Web Creator Description">
+  <meta name="description" content="Web Page Maker Description">
+  <script src="https://js.stripe.com/v3"></script>
   
-  <title>About</title>
+  <title>Purchase</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -61,73 +62,66 @@
     </nav>
 </section>
 
-<section class="engine"><a href="https://mobirise.info/y">html website templates</a></section><section class="counters4 counters cid-rHyi3pnIfd" id="counters4-7">
+<section class="engine"><a href="https://mobirise.info/x">css templates</a></section><section class="features8 cid-rJIqSU663w mbr-parallax-background" id="features8-i">
 
     
 
-    
+    <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(35, 35, 35);">
+    </div>
 
-    <div class="container pt-4 mt-2">
-        <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">What is Good Times?</h2>
-        <h3 class="mbr-section-subtitle pb-2 align-center mbr-fonts-style display-5 mb-0">Flex Scheduling Made Easy</h3>
-        <div class="text-center mt-0 pb-2"><a href="purchase.html" class="btn btn-secondary display-4">Buy Now</a></div>
-
+    <div class="container">
         <div class="media-container-row">
-            <div class="media-block m-auto" style="width: 49%;">
-                <div class="mbr-figure">
-                    <img src="assets/images/background6.jpg">
+
+            <div class="card  col-12 col-md-6">
+                <div class="card-img">
+                    <span class="mbr-iconfont mbri-cart-add"></span>
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style display-5">$1000.00<br>Per year</h4>
+                    <p class="mbr-text mbr-fonts-style display-7">Start saving time with your flex time scheduling now!</p>
+                    <div class="mbr-section-btn text-center"><a id="checkout-button-plan_GIF4m5CijIzuns" class="btn btn-secondary display-4">Purchase</a></div>
                 </div>
             </div>
-            <div class="cards-block">
-                <div class="cards-container">
-                    <div class="card px-3 align-left col-12">
-                        <div class="panel-item p-4 d-flex align-items-start">
-                            <div class="card-img pr-3">
-                                <h3 class="img-text d-flex align-items-center justify-content-center">
-                                    1
-                                </h3>
-                            </div>
-                            <div class="card-text">
-                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Administrators</h4>
-                                <p class="mbr-content-text mbr-fonts-style display-7">
-                                    Easily keep track of flex scheduled exploratory courses. Maintain attendance and repeating courses.&nbsp;</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card px-3 align-left col-12">
-                        <div class="panel-item p-4 d-flex align-items-start">
-                            <div class="card-img pr-3">
-                                <h3 class="img-text d-flex align-items-center justify-content-center">
-                                    2
-                                </h3>
-                            </div>
-                            <div class="card-text">
-                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Teachers</h4>
-                                <p class="mbr-content-text mbr-fonts-style display-7">
-                                    Add new courses with class sizes and scheduling.&nbsp;</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card px-3 align-left col-12">
-                        <div class="panel-item p-4 d-flex align-items-start">
-                            <div class="card-img pr-3">
-                                <h3 class="img-text d-flex align-items-center justify-content-center">
-                                    3
-                                </h3>
-                            </div>
-                            <div class="card-text">
-                                <h4 class="mbr-content-title mbr-bold mbr-fonts-style display-7">Students</h4>
-                                <p class="mbr-content-text mbr-fonts-style display-7">
-                                        Sign in with student account then choose courses for the week.&nbsp;</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+
+            
+
+            
+
+            
         </div>
     </div>
 </section>
+
+<script>
+(function() {
+  var stripe = Stripe('pk_test_2ZbCO3mrQI20LRWT4vj56PPI009zTeB5Qz');
+
+  var checkoutButton = document.getElementById('checkout-button-plan_GIF4m5CijIzuns');
+  checkoutButton.addEventListener('click', function () {
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      items: [{plan: 'plan_GIF4m5CijIzuns', quantity: 1}],
+
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://mwinb.github.io/goodtimes/purchase_success.html',
+      cancelUrl: 'https://mwinb.github.io/goodtimes/purchase.html',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+</script>
 
 
   <script src="assets/web/assets/jquery/jquery.min.js"></script>
@@ -135,7 +129,7 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/tether/tether.min.js"></script>
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>
+  <script src="assets/parallax/jarallax.min.js"></script>
   <script src="assets/dropdown/js/nav-dropdown.js"></script>
   <script src="assets/dropdown/js/navbar-dropdown.js"></script>
   <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
